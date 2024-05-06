@@ -1,6 +1,6 @@
 {
-    "name": "Spotify2Wled",
-    "version": "1.0.0",
+    "name": "Beats4Wled",
+    "version": "1.0.1",
     "description": "",
     "main": "index.mjs",
     "scripts": {

@@ -101,15 +101,13 @@ export default class Beats4Wled {
         //console.log('Bar:', this.beatCount, bar);
       });
 
-      this.flashType = 'beat';
-
-      if (this.flashType === 'bar') {
+      if (this.config.animation.type === 'bar') {
         this.beatDetector.on('bar', async ({ bar, beat }) => {
           console.log('Bar:', bar);
           this.color = this.beatColors[0];
           await this.wledSync(true);
         });
-      } else if (this.flashType === 'beat') {
+      } else if (this.config.animation.type === 'beat') {
         this.beatDetector.on('beat', async ({ beat }) => {
           const beatsPerBar = this.beatDetector.audioAnalysis.body.track.time_signature;
           if (beat.index < beatsPerBar) {
@@ -135,21 +133,21 @@ export default class Beats4Wled {
           await this.wledSync(true);
           this.previousBeat = performance.now()
         });
-      } else if (this.flashType === 'tatum') {
+      } else if (this.config.animation.type === 'tatum') {
         this.beatDetector.on('tatum', async ({ tatum, bar, beat }) => {
           this.beatCount++
           console.log('Tatum:', tatum);
           this.color = this.beatColors[(this.beatCount-1) % 32];
           await this.wledSync(true);
         });
-      } else if (this.flashType === 'segment') {
+      } else if (this.config.animation.type === 'segment') {
         this.beatDetector.on('segment', async ({ segment }) => {
           this.beatCount++
           console.log('segment:', segment);
           this.color = this.beatColors[(this.beatCount-1) % 32];
           await this.wledSync(true);
         });
-      } else if (this.flashType === 'section') {
+      } else if (this.config.animation.type === 'section') {
         this.beatDetector.on('section', async ({ section }) => {
           this.beatCount++
           console.log('section:', section);

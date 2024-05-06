@@ -51,9 +51,12 @@ In the directory where the `package.json` file is located, create a new file `co
     },
     "wled": {
         "host": "192.168.X.X",
-        "effectSpeed": 60,
         "fps": 30,
         "updateProtocol": "udp"
+    },
+    "animation": {
+        "speed": 60,
+        "type": "beat"
     }
 }
 ```
@@ -65,7 +68,7 @@ Run `npm run start` from the directory where the `package.json` is located.
 As soon as you play music on Spotify account, it will make your WLED strip flash to the beat of the music.
 
 ## Configuration
-There are a couple of different effects at the moment. The recommended one is `beat`, but the following are available:
+There are a couple of different animation types at the moment. The recommended one is `beat`, but the following are available:
 - segment (probably a bit overwhelming as it flashes every time the song changes significantly which might be several times per beat and a bit random)
 - tatum (if you are looking for lower interval flashing that on beat)
 - beat (recommended, flashes on beat)
